@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dulce Encanto - Repostería Artesanal | La Rioja, Argentina</title>
+    <meta name="description" content="Dulce Encanto - Repostería artesanal en La Rioja, Argentina. Cupcakes, tortas, macarons y más. Creamos nuevos sabores y decoraciones únicas a precios accesibles.">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --background: hsl(320, 60%, 97%);
+            --foreground: hsl(222, 20%, 20%);
+            --card: hsl(0, 0%, 100%);
+            --card-foreground: hsl(222, 20%, 20%);
+            --primary: hsl(315, 45%, 75%);
+            --primary-foreground: hsl(0, 0%, 100%);
+            --secondary: hsl(260, 40%, 85%);
+            --secondary-foreground: hsl(222, 20%, 20%);
+            --muted: hsl(120, 30%, 90%);
+            --muted-foreground: hsl(215, 16%, 47%);
+            --accent: hsl(40, 60%, 92%);
+            --accent-foreground: hsl(222, 20%, 20%);
+            --border: hsl(315, 20%, 85%);
+            --input: hsl(315, 20%, 85%);
+            --ring: hsl(315, 45%, 75%);
+            --font-sans: 'Inter', sans-serif;
+            --font-serif: 'Playfair Display', serif;
+            --font-dancing: 'Dancing Script', cursive;
+            --radius: 12px;
+            --gradient-pastel: linear-gradient(135deg, hsl(315, 60%, 95%) 0%, hsl(260, 50%, 95%) 50%, hsl(120, 40%, 95%) 100%);
+            --gradient-card: linear-gradient(145deg, hsl(0, 0%, 100%) 0%, hsl(315, 30%, 98%) 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--gradient-pastel);
+            color: var(--foreground);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .font-playfair {
+            font-family: var(--font-serif);
+        }
+
+        .font-dancing {
+            font-family: var(--font-dancing);
+        }
+
+        .gradient-card {
+            background: var(--gradient-card);
+        }
+
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px hsl(315 45% 75% / 0.15);
+        }
+
+        /* Navigation */
+        .navbar {
+            background: hsla(0, 0%, 100%, 0.8);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo i {
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        .logo h1 {
+            font-family: var(--font-dancing);
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--muted-foreground);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .mobile-menu {
+            display: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 4rem 1rem;
+            text-align: center;
+        }
+
+        .hero-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .hero h2 {
+            font-family: var(--font-serif);
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero .highlight {
+            color: var(--primary);
+            font-family: var(--font-dancing);
+        }
+
+        .hero p {
+            font-size: 1.125rem;
+            color: var(--muted-foreground);
+            margin-bottom: 2rem;
+            max-width: 48rem;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            padding: 0.75rem 2rem;
+            border-radius: var(--radius);
+            font-weight: 500;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--primary-foreground);
+            box-shadow: 0 4px 6px hsl(315 45% 75% / 0.25);
+        }
+
+        .btn-primary:hover {
+            background: hsl(315, 45%, 70%);
+        }
+
+        .btn-secondary {
+            background: var(--secondary);
+            color: var(--secondary-foreground);
+        }
+
+        .btn-secondary:hover {
+            background: hsl(260, 40%, 80%);
+        }
+
+        .location {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            color: var(--muted-foreground);
+            font-size: 0.875rem;
+        }
+
+        .location i {
+            color: var(--primary);
+        }
+
+        /* Sections */
+        .section {
+            padding: 4rem 1rem;
+        }
+
+        .section-alt {
+            background: hsla(0, 0%, 100%, 0.5);
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            color: var(--muted-foreground);
+            font-size: 1.125rem;
+        }
+
+        /* Product Grid */
+        .product-category {
+            margin-bottom: 4rem;
+        }
+
+        .category-title {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .product-card {
+            background: var(--gradient-card);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px hsl(315 45% 75% / 0.1);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: var(--radius);
+            margin-bottom: 1rem;
+        }
+
+        .product-name {
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--foreground);
+        }
+
+        .product-description {
+            color: var(--muted-foreground);
+            font-size: 0.875rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .product-price {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Form Styles */
+        .form-container {
+            max-width: 1024px;
+            margin: 0 auto;
+        }
+
+        .form-card {
+            background: var(--gradient-card);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: 0 4px 6px hsl(315 45% 75% / 0.1);
+        }
+
+        .form-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-label {
+            font-weight: 500;
+            color: var(--foreground);
+        }
+
+        .form-input {
+            padding: 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: calc(var(--radius) - 2px);
+            background: var(--card);
+            color: var(--foreground);
+            font-size: 1rem;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--ring);
+            box-shadow: 0 0 0 2px hsl(315 45% 75% / 0.2);
+        }
+
+        .form-textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .checkbox-category {
+            background: hsla(0, 0%, 100%, 0.5);
+            padding: 1rem;
+            border-radius: calc(var(--radius) - 2px);
+        }
+
+        .checkbox-title {
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+            color: var(--foreground);
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .checkbox-item input {
+            accent-color: var(--primary);
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .radio-item input {
+            accent-color: var(--primary);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.125rem;
+            margin-top: 1.5rem;
+        }
+
+        /* Contact Cards */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-card {
+            background: var(--gradient-card);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 2px 4px hsl(315 45% 75% / 0.1);
+        }
+
+        .contact-card i {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-card h4 {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card p {
+            color: var(--muted-foreground);
+        }
+
+        .contact-card .highlight {
+            color: var(--foreground);
+            font-weight: 500;
+        }
+
+        /* Social Media */
+        .social-section {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .social-title {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            color: var(--primary);
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: hsl(315, 45%, 65%);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--foreground);
+            color: var(--background);
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo i {
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        .footer-logo h2 {
+            font-family: var(--font-dancing);
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .footer p {
+            margin-bottom: 1rem;
+        }
+
+        .footer .copyright {
+            font-size: 0.875rem;
+            opacity: 0.8;
+        }
+
+        /* Floating Contact Button */
+        .floating-contact {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+        }
+
+        .floating-btn {
+            background: var(--primary);
+            color: var(--primary-foreground);
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            border: none;
+            font-size: 1.25rem;
+            cursor: pointer;
+            box-shadow: 0 4px 12px hsl(315 45% 75% / 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .floating-btn:hover {
+            background: hsl(315, 45%, 70%);
+            transform: scale(1.1);
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1rem 1.5rem;
+            box-shadow: 0 4px 12px hsl(315 45% 75% / 0.15);
+            z-index: 1000;
+            display: none;
+            min-width: 300px;
+        }
+
+        .toast.success {
+            border-left: 4px solid #10b981;
+        }
+
+        .toast.error {
+            border-left: 4px solid #ef4444;
+        }
+
+        .toast-title {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .toast-description {
+            color: var(--muted-foreground);
+            font-size: 0.875rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+                background: none;
+                border: none;
+                color: var(--primary);
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .checkbox-group {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .social-links {
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section {
+                padding: 2rem 1rem;
+            }
+
+            .form-card {
+                padding: 1rem;
+            }
+
+            .floating-contact {
+                bottom: 10px;
+                right: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-birthday-cake"></i>
+                <h1>Dulce Encanto</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#inicio" onclick="scrollToSection('inicio')">Inicio</a></li>
+                <li><a href="#productos" onclick="scrollToSection('productos')">Productos</a></li>
+                <li><a href="#pedidos" onclick="scrollToSection('pedidos')">Pedidos</a></li>
+                <li><a href="#contacto" onclick="scrollToSection('contacto')">Contacto</a></li>
+            </ul>
+            <button class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="hero-container">
+            <h2 class="font-playfair">
+                Bienvenidos a <span class="highlight">Dulce Encanto</span>
+            </h2>
+            <p>
+                Nuestro objetivo es brindar nuevos sabores y decoraciones únicas a un precio accesible para los clientes, permitiendo que estos puedan disfrutar de los productos creados con mucha dedicación y amor.
+            </p>
+            <div class="hero-buttons">
+                <a href="#productos" class="btn btn-primary" onclick="scrollToSection('productos')">
+                    Ver Productos
+                </a>
+                <a href="#pedidos" class="btn btn-secondary" onclick="scrollToSection('pedidos')">
+                    Hacer Pedido
+                </a>
+            </div>
+            <div class="location">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>La Rioja, Argentina</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="productos" class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title font-playfair">Nuestros Productos</h3>
+                <p class="section-subtitle">Creaciones artesanales hechas con amor y dedicación</p>
+            </div>
+
+            <!-- Cupcakes -->
+            <div class="product-category">
+                <h4 class="category-title font-playfair">Cupcakes Decorados</h4>
+                <div class="product-grid">
+                    <div class="product-card hover-lift">
+                        <img src="cupcake colorido.webp" alt="Cupcake Fantasía">
+                        <h5 class="product-name">Cupcake Fantasía</h5>
+                        <p class="product-description">Con frosting de vainilla y decoración colorida</p>
+                        <p class="product-price">ARS $4.200</p>
+                    </div>
+                    <div class="product-card hover-lift">
+                        <img src="primavera.jpg" alt="Cupcake Primaveral">
+                        <h5 class="product-name">Cupcake Primaveral</h5>
+                        <p class="product-description">Frosting rosa con flores comestibles</p>
+                        <p class="product-price">ARS $4.800</p>
+                    </div>
+                    <div class="product-card hover-lift">
+                        <img src="bosque magdlena.jpg" alt="Cupcake del Bosque">
+                        <h5 class="product-name">Cupcake del Bosque</h5>
+                        <p class="product-description">Chocolate con berries frescos</p>
+                        <p class="product-price">ARS $4.500</p>
+                    </div>
+                    <div class="product-card hover-lift">
+                        <img src="cupcake lavandaaa.jpg" alt="Cupcake Lavanda">
+                        <h5 class="product-name">Cupcake Lavanda</h5>
+                        <p class="product-description">Sabor lavanda con frosting púrpura</p>
+                        <p class="product-price">ARS $4.300</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tortas -->
+            <div class="product-category">
+                <h4 class="category-title font-playfair">Tortas Artesanales</h4>
+                <div class="product-grid">
+                    <div class="product-card hover-lift">
+                        <img src="torta primavera.jpg" alt="Torta Jardín Secreto">
+                        <h5 class="product-name">Torta Jardín Secreto</h5>
+                        <p class="product-description">Vainilla con flores frescas y crema</p>
+                        <p class="product-price">ARS $18.500</p>
+                    </div>
+                    <div class="product-card hover-lift">
+                        <img src="torta dorada.jpg" alt="Torta Elegancia Dorada">
+                        <h5 class="product-name">Torta Elegancia Dorada</h5>
+                        <p class="product-description">Chocolate con goteo dorado</p>
+                        <p class="product-price">ARS $22.800</p>
+                    </div>
+                    <div class="product-card hover-lift">
+                        <img src="terciopleo rojo torta.jpg" alt="Torta Terciopelo Rojo">
+                        <h5 class="product-name">Torta Terciopelo Rojo</h5>
+                        <p class="product-description">Red velvet con frosting de queso crema</p>
+                        <p class="product-price">ARS $20.200</p>
+                    </div>
+                    <div class="product-card hover-lift">
+                        <img src="https://images.unsplash.com/photo-1621303837174-89787a7d4729?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=300" alt="Torta Citrus Dreams">
+                        <h5 class="product-name">Torta Citrus Dreams</h5>
+                        <p class="product-description">Limón con crema blanca y decoración cítrica</p>
+                        <p class="product-price">ARS $17.800</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Macarons -->
+            <div class="product-category">
+                <h4 class="category-title font-playfair">Macarons Pasteles</h4>
+                <div class="product-grid">
+                    <div class="product-card hover-lift">
+                        <img src="macarons CORRECTOS.jpg" alt="Caja Arcoíris Pastel">
+                        <h5 class="product-name">Caja Arcoíris Pastel</h5>
+                        <p class="product-description">12 macarons de sabores variados</p>
+                        <p class="product-price">ARS $12.500</p>
+                    </div>
+                    <div class="product-card hover-lift">
+                        <img src="macarons rosa.jpg" alt="Torre Rosa Elegante">
+                        <h5 class="product-name">Torre Rosa Elegante</h5>
+                        <p class="product-description">25 macarons rosa y vainilla</p>
+                        <p class="product-price">ARS $24.200</p>
+                    </div>
+                    <div class="product-card hover-lift">
+                        <img src="lavanda macarons.jpg" alt="Macarons de Lavanda">
+                        <h5 class="product-name">Macarons de Lavanda</h5>
+                        <p class="product-description">6 macarons sabor lavanda con flores</p>
+                        <p class="product-price">ARS $8.900</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Brownies -->
+            <div class="product-category">
+                <h4 class="category-title font-playfair">Brownies Caseros</h4>
+                <div class="product-grid">
+                    <div class="product-card hover-lift">
+                        <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=300" alt="Brownie Clásico">
+                        <h5 class="product-name">Brownie Clásico</h5>
+                        <p class="product-description">Con nueces y chocolate extra</p>
+                        <p class="product-price">ARS $3.200</p>
+                    </div>
+                    <div class="product-card hover-lift">
+                        <img src="brownie color blanco frutos rojos.jpg" alt="Brownie Blanco Real">
+                        <h5 class="product-name">Brownie Blanco Real</h5>
+                        <p class="product-description">Chocolate blanco con frutos rojos</p>
+                        <p class="product-price">ARS $3.800</p>
+                    </div>
+                    <div class="product-card hover-lift">
+                        <img src="brownie salado.jpg" alt="Brownie Dulce Tentación">
+                        <h5 class="product-name">Brownie Dulce Tentación</h5>
+                        <p class="product-description">Con dulce de leche salado</p>
+                        <p class="product-price">ARS $3.500</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cookies -->
+            <div class="product-category">
+                <h4 class="category-title font-playfair">Cookies Decoradas</h4>
+                <div class="product-grid">
+                    <div class="product-card hover-lift">
+                        <img src="cookie primavera.jpg" alt="Cookies Florales">
+                        <h5 class="product-name">Cookies Florales</h5>
+                        <p class="product-description">Decoradas con flores de azúcar</p>
+                        <p class="product-price">ARS $1.200 c/u</p>
+                    </div>
+                    <div class="product-card hover-lift">
+                        <img src="cookie de amor.jpg" alt="Cookies de Amor">
+                        <h5 class="product-name">Cookies de Amor</h5>
+                        <p class="product-description">Forma de corazón con glaseado rosa</p>
+                        <p class="product-price">ARS $1.500 c/u</p>
+                    </div>
+                    <div class="product-card hover-lift">
+                        <img src="cookie navidad.jpg" alt="Cookies Estrella Dorada">
+                        <h5 class="product-name">Cookies Estrella Dorada</h5>
+                        <p class="product-description">Estrellas con sprinkles dorados</p>
+                        <p class="product-price">ARS $1.350 c/u</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Form Section -->
+    <section id="pedidos" class="section">
+        <div class="form-container">
+            <div class="section-header">
+                <h3 class="section-title font-playfair">Realizar Pedido</h3>
+                <p class="section-subtitle">Completa el formulario y nos contactaremos contigo</p>
+            </div>
+
+            <div class="form-card">
+                <form id="orderForm" class="form-grid">
+                    <!-- Personal Information -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="name">Nombre Completo *</label>
+                            <input type="text" id="name" name="name" class="form-input" placeholder="Tu nombre completo" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="phone">Teléfono *</label>
+                            <input type="tel" id="phone" name="phone" class="form-input" placeholder="+54 9 XXX XXX XXXX" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email</label>
+                        <input type="email" id="email" name="email" class="form-input" placeholder="tu@email.com">
+                    </div>
+
+                    <!-- Product Selection -->
+                    <div class="form-group">
+                        <label class="form-label">Selecciona tus productos *</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-category">
+                                <h4 class="checkbox-title">Cupcakes</h4>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="cupcake-fantasia" name="products" value="Cupcake Fantasía">
+                                    <label for="cupcake-fantasia">Cupcake Fantasía (ARS $4.200)</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="cupcake-primaveral" name="products" value="Cupcake Primaveral">
+                                    <label for="cupcake-primaveral">Cupcake Primaveral (ARS $4.800)</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="cupcake-bosque" name="products" value="Cupcake del Bosque">
+                                    <label for="cupcake-bosque">Cupcake del Bosque (ARS $4.500)</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="cupcake-lavanda" name="products" value="Cupcake Lavanda">
+                                    <label for="cupcake-lavanda">Cupcake Lavanda (ARS $4.300)</label>
+                                </div>
+                            </div>
+
+                            <div class="checkbox-category">
+                                <h4 class="checkbox-title">Tortas</h4>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="torta-jardin" name="products" value="Torta Jardín Secreto">
+                                    <label for="torta-jardin">Torta Jardín Secreto (ARS $18.500)</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="torta-dorada" name="products" value="Torta Elegancia Dorada">
+                                    <label for="torta-dorada">Torta Elegancia Dorada (ARS $22.800)</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="torta-terciopelo" name="products" value="Torta Terciopelo Rojo">
+                                    <label for="torta-terciopelo">Torta Terciopelo Rojo (ARS $20.200)</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="torta-citrus" name="products" value="Torta Citrus Dreams">
+                                    <label for="torta-citrus">Torta Citrus Dreams (ARS $17.800)</label>
+                                </div>
+                            </div>
+
+                            <div class="checkbox-category">
+                                <h4 class="checkbox-title">Macarons</h4>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="macarons-arcoiris" name="products" value="Caja Arcoíris Pastel">
+                                    <label for="macarons-arcoiris">Caja Arcoíris Pastel (ARS $12.500)</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="torre-rosa" name="products" value="Torre Rosa Elegante">
+                                    <label for="torre-rosa">Torre Rosa Elegante (ARS $24.200)</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="macarons-lavanda" name="products" value="Macarons de Lavanda">
+                                    <label for="macarons-lavanda">Macarons de Lavanda (ARS $8.900)</label>
+                                </div>
+                            </div>
+
+                            <div class="checkbox-category">
+                                <h4 class="checkbox-title">Brownies</h4>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="brownie-clasico" name="products" value="Brownie Clásico">
+                                    <label for="brownie-clasico">Brownie Clásico (ARS $3.200)</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="brownie-blanco" name="products" value="Brownie Blanco Real">
+                                    <label for="brownie-blanco">Brownie Blanco Real (ARS $3.800)</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="brownie-dulce" name="products" value="Brownie Dulce Tentación">
+                                    <label for="brownie-dulce">Brownie Dulce Tentación (ARS $3.500)</label>
+                                </div>
+                            </div>
+
+                            <div class="checkbox-category">
+                                <h4 class="checkbox-title">Cookies</h4>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="cookies-florales" name="products" value="Cookies Florales">
+                                    <label for="cookies-florales">Cookies Florales (ARS $1.200 c/u)</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="cookies-amor" name="products" value="Cookies de Amor">
+                                    <label for="cookies-amor">Cookies de Amor (ARS $1.500 c/u)</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="cookies-estrella" name="products" value="Cookies Estrella Dorada">
+                                    <label for="cookies-estrella">Cookies Estrella Dorada (ARS $1.350 c/u)</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Event Details -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="eventDate">Fecha del Evento</label>
+                            <input type="date" id="eventDate" name="eventDate" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="numberOfPeople">Cantidad de Personas</label>
+                            <input type="number" id="numberOfPeople" name="numberOfPeople" class="form-input" placeholder="Ej: 15">
+                        </div>
+                    </div>
+
+                    <!-- Special Instructions -->
+                    <div class="form-group">
+                        <label class="form-label" for="specialInstructions">Instrucciones Especiales</label>
+                        <textarea id="specialInstructions" name="specialInstructions" class="form-input form-textarea" placeholder="Describe cualquier personalización, alergias, o instrucciones especiales..."></textarea>
+                    </div>
+
+                    <!-- Payment Method -->
+                    <div class="form-group">
+                        <label class="form-label">Método de Pago Preferido</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="efectivo" name="paymentMethod" value="efectivo" checked>
+                                <label for="efectivo">Efectivo (ARS)</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="transferencia" name="paymentMethod" value="transferencia">
+                                <label for="transferencia">Transferencia Bancaria (ARS)</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="tarjeta" name="paymentMethod" value="tarjeta">
+                                <label for="tarjeta">Tarjeta de Débito/Crédito (ARS)</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <form id="orderForm">
+  <!-- tus checkboxes, inputs, radios y botón -->
+  
+  <button type="submit" class="btn btn-primary btn-submit">
+    <i class="fas fa-heart"></i>
+    Enviar Pedido
+  </button>
+                    <p style="text-align: center; font-size: 0.875rem; color: var(--muted-foreground); margin-top: 0.75rem;">
+                        Nos contactaremos contigo dentro de 24 horas para confirmar tu pedido
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title font-playfair">Contacto y Ubicación</h3>
+                <p class="section-subtitle">Estamos aquí para hacer realidad tus dulces sueños</p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <i class="fas fa-phone"></i>
+                    <h4 class="font-playfair">Teléfono</h4>
+                    <p class="highlight">+54 9 XXX XXX XXXX</p>
+                    <p>Lun - Sáb: 9:00 - 19:00</p>
+                </div>
+
+                <div class="contact-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h4 class="font-playfair">Ubicación</h4>
+                    <p class="highlight">La Rioja, Argentina</p>
+                    <p>Entregas en toda la ciudad</p>
+                </div>
+
+                <div class="contact-card">
+                    <i class="fas fa-envelope"></i>
+                    <h4 class="font-playfair">Email</h4>
+                    <p class="highlight">info@dulceencanto.com</p>
+                    <p>Respuesta en 24 hrs</p>
+                </div>
+            </div>
+
+            <!-- Social Media -->
+            <div class="social-section">
+                <h4 class="social-title font-playfair">Síguenos en Redes Sociales</h4>
+                <div class="social-links">
+                    <a href="#" onclick="openSocial('instagram')"><i class="fab fa-instagram"></i></a>
+                    <a href="#" onclick="openSocial('facebook')"><i class="fab fa-facebook"></i></a>
+                    <a href="#" onclick="openWhatsApp()"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-logo">
+                <i class="fas fa-birthday-cake"></i>
+                <h2>Dulce Encanto</h2>
+            </div>
+            <p>Creando momentos dulces con dedicación y amor desde La Rioja, Argentina</p>
+            <p class="copyright">© 2024 Dulce Encanto. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Floating Contact Button -->
+    <div class="floating-contact">
+        <button class="floating-btn" onclick="openWhatsApp()" title="Contactar por WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </button>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <div id="toastTitle" class="toast-title"></div>
+        <div id="toastDescription" class="toast-description"></div>
+    </div>
+
+    <script>
+        // Smooth scrolling function
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        // WhatsApp function
+        function openWhatsApp() {
+            const message = encodeURIComponent("¡Hola! Me interesa hacer un pedido en Dulce Encanto.");
+            const whatsappUrl = `https://wa.me/543804149819?text=${message}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Social media functions
+        function openSocial(platform) {
+            let url = '#';
+            switch(platform) {
+                case 'instagram':
+                    url ='https://www.instagram.com/dulcee_encantoabc?igsh=ZnkzZTFqMTFhYjhj';
+                    break;
+                case 'facebook':
+                    url = 'https://facebook.com/dulceencanto';
+                    break;
+            }
+            window.open(url, '_blank');
+        }
+
+        // Toast notification function
+        function showToast(title, description, type = 'success') {
+            const toast = document.getElementById('toast');
+            const toastTitle = document.getElementById('toastTitle');
+            const toastDescription = document.getElementById('toastDescription');
+            
+            toastTitle.textContent = title;
+            toastDescription.textContent = description;
+            
+            toast.className = `toast ${type}`;
+            toast.style.display = 'block';
+            
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 5000);
+        }
+
+        // Form submission
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const name = formData.get('name');
+            const phone = formData.get('phone');
+            const selectedProducts = formData.getAll('products');
+            
+            // Validation
+            if (!name || !phone) {
+                showToast('Error de validación', 'Por favor completa todos los campos obligatorios', 'error');
+                return;
+            }
+            
+            if (selectedProducts.length === 0) {
+                showToast('Error de validación', 'Debe seleccionar al menos un producto', 'error');
+                return;
+            }
+            
+            // Simulate form submission
+            setTimeout(() => {
+                showToast(
+                    '¡Pedido enviado exitosamente!', 
+                    'Nos contactaremos contigo dentro de 24 horas para confirmar tu pedido.',
+                    'success'
+                );
+                
+                // Reset form
+                this.reset();
+            }, 1000);
+        });
+
+        // Mobile menu toggle (basic implementation)
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Add smooth scroll behavior to all navigation links
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-links a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    scrollToSection(targetId);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
